@@ -10,7 +10,7 @@ import undetected_chromedriver as uc
 import selenium
 import pyautogui
 
-GROQ_API_KEY = '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'
+GROQ_API_KEY = 'ur_api'
 RESULTS_FILE = 'results.json'
 
 def send_groq_request(order_text, prompt_type):
@@ -57,7 +57,7 @@ def send_groq_request(order_text, prompt_type):
         ты должен ответить только одним из этих
 
         ТОЛЬКО НАХУЙ ОДНИМ СЛОВОМ, НИ БОЛЬШЕ, БЕЗ ЛИШНИХ СЛОВ ИЛИ ПОЯСНЕНИЙ, ТОЛЬКО ГОВОРИ ТЕ СЛОВА КОТОРЫЕ Я ТЕБЕ ДАЛ НА ВЫБОР И НИЧЕГО ЛИШНЕЕ
-        """
+        """ #по другому он не понимает((((
 
     payload = {
         "model": "meta-llama/llama-4-scout-17b-16e-instruct",
@@ -117,10 +117,10 @@ def collect_links_on_page(driver):
     return links
 
 def process_link(driver, link, processed):
-    # project_id = link.split('/')[2]
-    # if project_id in processed:
-    #     print(f"Уже обработан {project_id}, пропускаем.")
-    #     return
+     project_id = link.split('/')[2]
+     if project_id in processed:
+         print(f"Уже обработан {project_id}, пропускаем.")
+         return
 
     try:
         element = driver.find_element(By.XPATH, f"//a[contains(@href, '{link}')]")
@@ -341,4 +341,5 @@ def main():
             print("[INFO] Скрипт завершён.")
 
 if __name__ == "__main__":
+
     main()
